@@ -1,0 +1,40 @@
+@using WebApplication29.Models
+@model  List<Employ>
+
+
+<h3>Employ Controller -- Index Page</h3>
+<hr/>
+
+@* 
+    <h3> @ViewBag.Message </h3>  
+*@
+
+<a href="/Employ/Create">Create New</a>
+
+<table border="2" width="600">
+    <tr>
+        <th>Employ Id</th>
+        <th>Employ Name</th>
+        <th>Salary</th>
+        <th>Job<th>
+        
+    </tr>
+
+    @foreach(Employ item in Model)
+    {
+         <tr>
+            <td>@item.EmployId</td>
+            <td>@item.EmployName</td>
+            <td>@item.Sal</td>
+            <td>@item.Job</td>     
+            <td>
+                <a href="/Employ/Details/@item.EmployId">Details</a> |
+                <a href="/Employ/Edit/@item.EmployId">Edit</a> |
+                <a href="/Employ/Delete/@item.EmployId">Delete</a>  
+            </td>
+         </tr>
+    }
+
+   
+</table>
+

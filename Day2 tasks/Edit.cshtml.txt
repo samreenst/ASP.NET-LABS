@@ -1,0 +1,39 @@
+@using WebApplication29.Models
+@model  Employ
+
+
+<h3>Edit Product</h3>
+
+ 
+<form  action="/Employ/Edit" method="post">
+    <label>Employ Id  : </label>
+    <input name="EmployId" type="text" readonly value="@Model.EmployId" />
+    <br/><br/>
+
+    <label>Employ Name  : </label>
+    <input name="Employ Name" type="text" value="@Model.EmployName" />
+    <br/><br/>
+
+     <label>Salary  : </label>
+    <input name="Salary" type="text" value="@Model.Sal" />
+    <br/><br/>
+
+    <label>Job </label>
+    <input name="Job" type="text" value="@Model.Job" />
+    <br/><br/>
+
+    <input type="submit" value="Edit" />
+</form>
+
+
+@{
+    if(ViewBag.RequestType == "POST")
+    {
+        <h1>@ViewBag.ErrorMessage</h1>
+    }
+}
+
+
+<hr/>
+ <a href="/Employ/Index">Back to List</a>
+

@@ -1,0 +1,17 @@
+@using WebApplication29.Models
+@model  Employ
+
+
+<h3>Selected Employ Details</h3>
+
+
+<div>
+    Employ Id  :  @Model.EmployId  <br/>
+    Employ Name  :  @Model.EmployName  <br/>
+    Salary  :  @Model.Sal<br/>
+    Job  :  @Model.Job<br/>
+</div>
+
+<hr/>
+ <a href="/Employ/Index">Back to List</a>
+

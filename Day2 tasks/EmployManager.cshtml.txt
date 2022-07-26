@@ -1,0 +1,41 @@
+namespace WebApplication29.Models
+{
+    public class EmployManager
+    {
+        public static List<Employ> products = new List<Employ>();
+        public EmployManager()
+        {
+            products = new List<Employ>() {
+                new Employ(){ EmployId = 1022, EmployName = "Samm", Sal = 2400, Job = "Sales" },
+                new Employ(){ EmployId = 1023, EmployName = "Rohan",Sal = 1200, Job = "Finanace" },
+                new Employ(){ EmployId  = 1024,EmployName = "Lara", Sal = 900, Job = "Accounting" },
+                new Employ(){ EmployId = 1025, EmployName = "Faiqa",Sal = 1500, Job = "Sales-2" },
+                new Employ(){ EmployId = 1026, EmployName = "Dina", Sal = 800, Job = "Programmer" }
+            };
+        }
+        public List<Employ> GetAllDets()
+        {
+            return products;
+        }
+        public Employ GetProductById(int id)
+        {
+            return products.Find(item => item.EmployId == id);
+        }
+        public void AddProduct(Employ obj)
+        {
+            products.Add(obj);
+        }
+        public void DeleteProduct(int id)
+        {
+            Employ obj = products.Find(item => item.EmployId == id);
+            products.Remove(obj);
+        }
+        public void UpdateProduct(Employ updateObj)
+        {
+            Employ obj = products.Find(item => item.EmployId == updateObj.EmployId);
+            products.Remove(obj);
+            products.Add(updateObj);
+        }
+
+    }
+}

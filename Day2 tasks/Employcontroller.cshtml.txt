@@ -1,0 +1,99 @@
+using Microsoft.AspNetCore.Mvc;
+using WebApplication29.Models;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace WebApplication29.Controllers
+{
+    public class EmployController  Controller
+    {
+
+        EmployManager context = new EmployManager();
+        public IActionResult Index()
+        {
+            ListEmploy products = context.GetAllDets();
+            return View(products);
+        }
+
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Employ id)
+        {
+            if (ModelState.IsValid == true)
+            {
+                 Save the data
+                context.AddProduct(id);
+                return RedirectToAction(Index);
+
+            }
+            else
+            {
+
+                ViewBag.RequestType = Request.Method;
+                ViewBag.ErrorMessage = Invalid data;
+                return View();
+            }
+        }
+
+        public IActionResult Details(int id)
+        {
+            Employ obj = context.GetProductById(id);
+            return View(obj);
+        }
+
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Employ obj = context.GetProductById(id);
+            return View(obj);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Employ obj)
+        {
+            if (ModelState.IsValid == true)
+            {
+                 Save the data
+                context.UpdateProduct(obj);
+                return RedirectToAction(Index);
+
+            }
+            else
+            {
+
+                ViewBag.RequestType = Request.Method;
+                ViewBag.ErrorMessage = Invalid data;
+                return View();
+            }
+        }
+
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            Employ obj = context.GetProductById(id);
+            return View(obj);
+        }
+
+        [HttpPost]
+        [ActionName(Delete)]
+        public IActionResult DeleteConfirm(int id)
+        {
+            context.DeleteProduct(id);
+            return RedirectToAction(Index);
+
+
+             ListProduct products = context.GetAllDets();
+             return View(Index, products);
+        }
+
+    }
+}
