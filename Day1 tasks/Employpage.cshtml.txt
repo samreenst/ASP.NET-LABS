@@ -1,0 +1,39 @@
+EMPLOYEE PAGE
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <table>
+  <tr>
+    <th>Empno</th>
+    <th>Ename</th>
+    <th>Job</th>
+    <th>Sal</th>
+  </tr>
+  <tr>
+    <td>145</td>
+    <td>Sam</td>
+    <td>Manager</td>
+    <td>980000</td>
+  </tr>
+   <tr>
+    <td>146</td>
+    <td>Mansi</td>
+    <td>Sales</td>
+    <td>980000</td>
+  </tr>
+   <tr>
+    <td>147</td>
+    <td>Jai</td>
+    <td>Finance</td>
+    <td>980000</td>
+  </tr>
+   <tr>
+    <td>148</td>
+    <td>Dina</td>
+    <td>Accounting</td>
+    <td>980000</td>
+  </tr>
+
+</table>
+}

@@ -1,0 +1,7 @@
+ABOUTUS PAGE
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{ <h1>Our Organization</h1>
+ <img src="https://technical.ly/philly/wp-content/uploads/sites/2/2017/01/ThinkCo-073-e1485902743514.jpg" alt="Organization">
+}

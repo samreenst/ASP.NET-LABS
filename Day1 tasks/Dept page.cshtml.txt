@@ -1,0 +1,14 @@
+DEPTSPAGE
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+   <h1>Department Names</h1>
+
+    <ol>
+  <li>Sales</li>
+  <li>Finanace</li>
+  <li>Accounting</li>
+</ol>
+}
