@@ -1,0 +1,21 @@
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc;
+
+using log4net;
+
+namespace WebApplication30.Filters
+{
+    public class MyExceptionFilter : IExceptionFilter
+    {
+        private readonly ILog _logger = LogManager.GetLogger(typeof(MyExceptionFilter));
+
+        public void OnException(ExceptionContext context)
+        {
+
+            _logger.Error(context.Exception.Message);
+            context.ExceptionHandled = true;
+            string msg = context.RouteData.Values["controller"].ToString() + context.RouteData.Values["action"].ToString();
+            context.Result = new ViewResult() { ViewName = "CustomError" };
+        }
+    }
+}

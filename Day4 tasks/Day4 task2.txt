@@ -1,0 +1,98 @@
+To include two methods
+GetEmployByDeptno
+GetEmployByJob
+
+
+
+using Microsoft.AspNetCore.Mvc;
+using WebApplication4.Models;
+
+namespace WebApplication4.Controllers
+{
+    public class EmployController : Controller
+{
+
+    EmployDbContext _context;
+
+    public EmployController(EmployDbContext context)
+    {
+        _context = context;
+    }
+
+    public IActionResult Index()
+    {
+        List<Employ> stList = _context.Employs.ToList();
+        return View(stList);
+    }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult Create(Employ obj)
+    {
+        _context.Employs.Add(obj);
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
+    public IActionResult Details(int id)
+    {
+        Employ obj = _context.Employs.Find(id);
+        return View(obj);
+    }
+
+
+    [HttpGet]
+    public IActionResult Edit(int id)
+{
+    Employ obj = _context.Employs.Find(id);
+    return View(obj);
+}
+
+[HttpPost]
+public IActionResult Edit(Employ obj)
+{
+    _context.Employs.Update(obj);
+    _context.SaveChanges();
+    return RedirectToAction("Index");
+}
+
+
+[HttpGet]
+public IActionResult Delete(int id)
+{
+    Employ obj = _context.Employs.Find(id);
+    return View(obj);
+}
+
+[HttpPost]
+[ActionName("Delete")]
+public IActionResult DeleteConfirm(int id)
+{
+    Employ obj = _context.Employs.Find(id);
+    _context.Employs.Remove(obj);
+    _context.SaveChanges();
+    return RedirectToAction("Index");
+}
+        public Employ GetEmployByDeptno(int deptno)
+        {
+            System.Linq.Expressions.Expression<Func<Employ, bool>> predicate = d => d.Deptno == deptno;
+            Employ emp = (Employ)_context.Employs.Where(predicate);
+            return emp;
+
+        }
+        public Employ GetEmployByJob(string job)
+        {
+            Employ emp = (Employ)_context.Employs.Where(j => j.Job == job);
+            return emp;
+
+        }
+
+
+    }
+}

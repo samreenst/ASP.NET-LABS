@@ -1,0 +1,10 @@
+
+@{
+    ViewData["Title"] = "CustomErrors";
+}
+
+<h1>CustomError Page Redirected From MyException Filter</h1>
+
+<p> Sorry,we have some problem in server.We will make it up in few minutes. Please wait.  </p>
+
+<hr/>
