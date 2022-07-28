@@ -7,7 +7,7 @@
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "SchoolDbContext": "Server=WINDOWS-UNR7VLH;Database=EmployDb;Integrated Security=True"
+    "EmployDbContext": "Server=WINDOWS-UNR7VLH;Database=EmployDb;Integrated Security=True"
   }
 
 }
