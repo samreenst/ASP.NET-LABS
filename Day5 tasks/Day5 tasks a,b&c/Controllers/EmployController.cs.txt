@@ -1,0 +1,64 @@
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+using WebApplication31.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace WebApplication5.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EmploysController : ControllerBase
+    {
+        EmployDbContext _context;
+        public EmployController(EmployDbContext context)
+        {
+            _context = context;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllEmploys()
+        {
+            var stdList = await _context.Employs.ToListAsync();
+            return Ok(stdList);
+        }
+
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProductById(int id)
+        {
+            var stdObj = await _context.Employs.FindAsync(id);
+
+            if (stdObj != null)
+                return Ok(stdObj);
+            else
+                return NotFound("Requested Product Id does not exists.");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> AddEmploy(Employ obj)
+        {
+            await _context.Employs.AddAsync(obj);
+            await _context.SaveChangesAsync();
+            return Ok("New Employ details are saved in database.");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateEmploy(Employ obj)
+        {
+            _context.Employs.Update(obj);
+            await _context.SaveChangesAsync();
+            return Ok("Employ details are updated in database.");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEmploy(int id)
+        {
+            var stdObj = await _context.Employs.FindAsync(id);
+            _context.Employs.Remove(stdObj);
+            await _context.SaveChangesAsync();
+            return Ok("Employ details are deleted from database.");
+        }
+    }
+}
